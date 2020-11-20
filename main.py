@@ -64,8 +64,7 @@ class Reader(Thread):
         self.cap = cv2.VideoCapture()
         self.cache = False, None
         self.keep_running = True
-        self.notice = notice if notice is not None else Condition(
-            mutex if mutex is not None else Lock()) if wait else EmptyCondition()
+        self.notice = notice if notice is not None else Condition(mutex if mutex is not None else Lock()) if wait else EmptyCondition()
         self.read = self.read if wait else lambda: self.cache
         self.open(src=src)
 
